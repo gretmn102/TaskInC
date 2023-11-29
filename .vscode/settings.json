@@ -8,6 +8,7 @@
         "corecrt.h": "c",
         "corecrt_wtime.h": "c",
         "implemented.h": "c",
-        "corecrt_math.h": "c"
+        "corecrt_math.h": "c",
+        "limits.h": "c"
     }
 }

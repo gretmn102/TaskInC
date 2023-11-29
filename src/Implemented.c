@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <time.h>
+#include <limits.h>
 
 typedef struct Range {
     int from;
