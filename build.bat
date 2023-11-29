@@ -1,1 +1,1 @@
-gcc -fdiagnostics-color=always -g Implemented.c -o Implemented.exe
+gcc -fdiagnostics-color=always -g Main.c -o Main.exe

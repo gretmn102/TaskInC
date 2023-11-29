@@ -1,0 +1,1 @@
+gcc -fdiagnostics-color=always -g -o Tests.exe -I . Tests.c && Tests.exe
