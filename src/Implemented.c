@@ -3,6 +3,7 @@
 #include <locale.h>
 #include <time.h>
 #include <limits.h>
+#include <wchar.h>
 
 typedef struct Range {
     int from;
