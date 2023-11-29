@@ -5,7 +5,7 @@ int main(void) {
     int numberArraySize;
     int multipleOfIndex;
     float average;
-    printf("%.4f", 73.0);
+
     setlocale(LC_CTYPE, "Russian");
 
     Range range = RangeCreateFromInput();

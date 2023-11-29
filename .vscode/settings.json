@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "locale.h": "c",
+        "stdio.h": "c",
+        "time.h": "c",
+        "math.h": "c",
+        "corecrt.h": "c",
+        "corecrt_wtime.h": "c",
+        "implemented.h": "c",
+        "corecrt_math.h": "c"
+    }
+}

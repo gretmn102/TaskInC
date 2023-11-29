@@ -1,1 +1,2 @@
-gcc -fdiagnostics-color=always -g Main.c -o Main.exe
+mkdir src\bin
+gcc -fdiagnostics-color=always -g src/Main.c -o src/bin/Main.exe
