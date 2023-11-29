@@ -1,6 +1,6 @@
 #include "Implemented.c"
 
-int main(void) {
+int userFriendlySolution() {
     int *numberArray;
     int numberArraySize;
     int multipleOfIndex;
@@ -29,7 +29,7 @@ int main(void) {
     scanf("%d", &multipleOfIndex);
 
     average = ArrayAverage(numberArray, numberArraySize, multipleOfIndex);
-    wprintf(L"Среднее арифметическое — %f\n", average);
+    wprintf(L"Среднее арифметическое: %f\n", average);
 
     GreaterThan result = ArrayGreaterThan(numberArray, numberArraySize, average);
 
@@ -37,9 +37,34 @@ int main(void) {
     // GreaterThanString(&result, (char *)buff);
     // printf("%s\n", buff);
 
-    printf("%.4f\n%d\n%d %d\n", average, result.count, result.min, result.minCount);
+    wprintf(L"Минимальное число меньшее среднего арифметического: %d\n", result.min);
+    wprintf(L"Кол-во таких чисел: %d\n", result.minCount);
 
     free(numberArray);
 
     return 0;
+}
+
+int automaticSolution() {
+    int numberArray[40];
+    int numberArraySize = 40;
+    int multipleOfIndex;
+    float average;
+
+    ArrayFillFromInput(numberArray, numberArraySize);
+
+    scanf("%d", &multipleOfIndex);
+
+    average = ArrayAverage(numberArray, numberArraySize, multipleOfIndex);
+
+    GreaterThan result = ArrayGreaterThan(numberArray, numberArraySize, average);
+
+    printf("%.4f\n%d\n%d %d\n", average, result.count, result.min, result.minCount);
+
+    return 0;
+}
+
+int main(void) {
+    return userFriendlySolution();
+    // return automaticSolution();
 }

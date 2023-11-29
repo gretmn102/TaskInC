@@ -42,7 +42,6 @@ void ArrayPrint(int *arr, int size) {
 }
 
 void ArrayFillFromInput(int *array, int size) {
-    wprintf(L"Введите %d целых чисел:\n", size);
     for (int i = 0; i < size; i++) {
         scanf("%d", &array[i]);
     }
