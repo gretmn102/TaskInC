@@ -58,7 +58,7 @@ int RandomRange(Range *range)
  *      3    -1234
  * @endcode
  *
- * @param array
+ * @param[in] array
  * @param arrayLength
  */
 void ArrayPrint(int *array, int arrayLength) {
@@ -71,7 +71,7 @@ void ArrayPrint(int *array, int arrayLength) {
 
 /**
  * @brief Заполняет массив числами из стандартного ввода, разделенными через символ переноса.
- * @param array
+ * @param[out] array
  * @param arrayLength
  */
 void ArrayFillFromInput(int *array, int arrayLength) {
@@ -82,9 +82,9 @@ void ArrayFillFromInput(int *array, int arrayLength) {
 
 /**
  * @brief Заполняет массив случайными числами, которые генерируются из указанного диапазона.
- * @param array
+ * @param[out] array
  * @param arrayLength
- * @param range диапазон возможных чисел, @see RandomRange
+ * @param[in] range диапазон возможных чисел, @see RandomRange
  */
 void ArrayFillRandomNumbers(int *array, int arrayLength, Range *range) {
     srand(time(NULL));
@@ -120,7 +120,7 @@ float ArrayAverage(int *array, int size, int multipleOfIndex) {
 /**
  * @brief То же, что и `ArrayAverage`, но доступ к массиву реализован с помощью указателей.
  * @see ArrayAverage
- * @param array указатель на массив
+ * @param[in] array указатель на массив
  * @param size длина массива
  * @param multipleOfIndex
  */
@@ -157,11 +157,20 @@ typedef struct GreaterThan {
     int minCount;
 } GreaterThan;
 
+/**
+ * @param[in] first
+ * @param[in] second
+ */
 _Bool GreaterThanEquals(GreaterThan *first, GreaterThan *second) {
     return first->count == second->count && first->min == second->min && first->minCount == second->minCount;
 }
 
+/**
+ * @param[in] this
+ * @param[out] buffer
+ */
 void GreaterThanString(GreaterThan *this, char *buffer) {
+    // todo: add return written characters count
     sprintf(buffer, "{ count = %d, min = %d, minCount = %d }", this->count, this->min, this->minCount);
 }
 
@@ -169,7 +178,7 @@ void GreaterThanString(GreaterThan *this, char *buffer) {
  * @brief Считает кол-во чисел, которые больше указанного @p exclusiveMin .
  *        Находит среди них минимальное число.
  *        Подсчитывает, сколько раз встречается это минимальное число.
- * @param array
+ * @param[in] array
  * @param arrayLength
  * @param exclusiveMin считаются числа больше этого числа
  */
