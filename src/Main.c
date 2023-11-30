@@ -36,8 +36,8 @@ int userFriendlySolution() {
     // char buff[80];
     // GreaterThanString(&result, (char *)buff);
     // printf("%s\n", buff);
-
-    wprintf(L"Минимальное число меньшее среднего арифметического: %d\n", result.min);
+    wprintf(L"Кол-во чисел больше средне арифметического: %d\n", result.count);
+    wprintf(L"Минимальное число больше средне арифметического: %d\n", result.min);
     wprintf(L"Кол-во таких чисел: %d\n", result.minCount);
 
     free(numberArray);
