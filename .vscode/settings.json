@@ -10,6 +10,8 @@
         "implemented.h": "c",
         "corecrt_math.h": "c",
         "limits.h": "c",
-        "wchar.h": "c"
+        "wchar.h": "c",
+        "types.h": "c",
+        "windows.h": "c"
     }
 }

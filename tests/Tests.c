@@ -1,5 +1,7 @@
 #include <math.h>
 
+#include <src/Lib/Array.c>
+#include <src/Lib/String.c>
 #include <src/Implemented.c>
 
 #define ARRAY_SIZE(arr)  (sizeof arr / sizeof *arr)
@@ -160,11 +162,48 @@ void TestArrayPtrGreaterThan() {
     }
 }
 
+void TestArrayToString() {
+    {
+        printf("TestArrayToString.test1\n");
+        int arr[] = { 1, 2, 3 };
+        char actStr[80];
+        int actStrLength = ArrayToString((int *)arr, ARRAY_SIZE(arr), ",", actStr);
+
+        int expStrLength = 7;
+        if (expStrLength != actStrLength) {
+            printf("Expected: %d\nActual: %d\n", expStrLength, actStrLength);
+            exit(EXIT_FAILURE);
+        }
+
+        char expStr[] = "1,2,3,";
+        if (!StringEquals((char *)expStr, ARRAY_SIZE(expStr), (char *)actStr)) {
+            printf("Expected: %s\n Actual: %s!\n", expStr, actStr);
+            exit(EXIT_FAILURE);
+        }
+    }
+}
+
+void TestStringEquals() {
+    {
+        printf("StringEquals.test1\n");
+        char arr1[] = "1,2,3";
+        char arr2[] = "1,2,3";
+        bool act = StringEquals((char *)arr1, ARRAY_SIZE(arr1), (char *)arr2);
+        bool exp = true;
+        if (exp != act) {
+            printf("Error!\n");
+            exit(EXIT_FAILURE);
+        }
+    }
+}
+
 void RunTests() {
     TestArrayAverage();
     TestArrayPtrAverage();
     TestArrayGreaterThan();
     TestArrayPtrGreaterThan();
+    TestArrayToString();
+    TestStringEquals();
 }
 
 int main(void) {
