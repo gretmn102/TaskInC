@@ -3,10 +3,10 @@
 #include <wchar.h>
 #include <locale.h>
 
-#include <src/Lib/Array.c>
-#include <src/Tester/Request.c>
-#include <src/Tester/Response.c>
-#include <src/Tester/Process.c>
+#include "../Lib/Array.c"
+#include "Request.c"
+#include "Response.c"
+#include "Process.c"
 
 int main(int argc, char *argv[]) {
     setlocale(LC_CTYPE, "Russian");

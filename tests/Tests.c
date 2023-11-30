@@ -1,8 +1,8 @@
 #include <math.h>
 
-#include <src/Lib/Array.c>
-#include <src/Lib/String.c>
-#include <src/Main/Implemented.c>
+#include "../src/Lib/Array.c"
+#include "../src/Lib/String.c"
+#include "../src/Main/Implemented.c"
 
 #define ARRAY_SIZE(arr)  (sizeof arr / sizeof *arr)
 
