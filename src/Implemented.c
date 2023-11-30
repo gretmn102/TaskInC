@@ -135,3 +135,28 @@ GreaterThan ArrayGreaterThan(int *array, int size, int number)
     struct GreaterThan greaterThan = { count, min, minCount };
     return greaterThan;
 }
+
+// То же, что и `ArrayGreaterThan`, но доступ к массиву реализован с помощью указателей.
+GreaterThan ArrayPtrGreaterThan(int *array, int size, int number)
+{
+    int count = 0;
+    int min = INT_MAX;
+    int minCount = -1;
+    int current;
+    for (int *arrayLast = array + size; array < arrayLast; array++)
+    {
+        current = *array;
+        if (current > number)
+        {
+            if (current < min) {
+                min = current;
+                minCount = 1;
+            } else if (current == min) {
+                minCount++;
+            }
+            count++;
+        }
+    }
+    struct GreaterThan greaterThan = { count, min, minCount };
+    return greaterThan;
+}
