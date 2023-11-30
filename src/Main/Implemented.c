@@ -11,6 +11,10 @@ typedef struct Range {
     int to;
 } Range;
 
+/**
+ * @brief Интерактивно создает диапазон.
+ * @return @p Range
+ */
 Range RangeCreateFromInput()
 {
     int to, from;
@@ -30,35 +34,73 @@ Range RangeCreateFromInput()
     return range;
 }
 
+/**
+ * @brief Генерирует случайное значение в пределах указанного @p range
+ * @param[in] range диапазон возможных значений от и до. К примеру, при @p range равном <tt>{1, 5}</tt> функция будет генерировать числа 1, 2, 3 и 4.
+ * @return Случайное число в заданном диапазоне.
+ */
 int RandomRange(Range *range)
 {
     int diff = range->to - range->from;
     return rand() % diff + range->from;
 }
 
-void ArrayPrint(int *arr, int size) {
+/**
+ * @brief Выводит элементы массива.
+ *
+ * К примеру, <tt>ArrayPrint([-10, 40, 100, -1234], 4)</tt> выдаст следующее:
+ *
+ * @code{.txt}
+ * Индекс Значение
+ *      0      -10
+ *      1       40
+ *      2      100
+ *      3    -1234
+ * @endcode
+ *
+ * @param array
+ * @param arrayLength
+ */
+void ArrayPrint(int *array, int arrayLength) {
     wprintf(L"Индекс Значение\n");
-    for (int i = 0; i < size; i++) {
-        wprintf(L"%6d %8d\n", i, arr[i]);
+    for (int i = 0; i < arrayLength; i++) {
+        wprintf(L"%6d %8d\n", i, array[i]);
     }
     printf("\n");
 }
 
-void ArrayFillFromInput(int *array, int size) {
-    for (int i = 0; i < size; i++) {
+/**
+ * @brief Заполняет массив числами из стандартного ввода, разделенными через символ переноса.
+ * @param array
+ * @param arrayLength
+ */
+void ArrayFillFromInput(int *array, int arrayLength) {
+    for (int i = 0; i < arrayLength; i++) {
         scanf("%d", &array[i]);
     }
 }
 
-void ArrayFillRandomNumbers(int *array, int size, Range *range) {
+/**
+ * @brief Заполняет массив случайными числами, которые генерируются из указанного диапазона.
+ * @param array
+ * @param arrayLength
+ * @param range диапазон возможных чисел, @see RandomRange
+ */
+void ArrayFillRandomNumbers(int *array, int arrayLength, Range *range) {
     srand(time(NULL));
 
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < arrayLength; i++) {
         int j = RandomRange(range);
         array[i] = j;
     }
 }
 
+/**
+ * @brief Находит средне арифметическое значение элементов массива, индексы которых кратны @p multipleOfIndex
+ * @param[in] array входной массив
+ * @param size длина массива
+ * @param multipleOfIndex
+ */
 float ArrayAverage(int *array, int size, int multipleOfIndex) {
     int len = 0;
     int sum = 0;
@@ -75,7 +117,13 @@ float ArrayAverage(int *array, int size, int multipleOfIndex) {
     return 0;
 }
 
-// То же, что и `ArrayAverage`, но доступ к массиву реализован с помощью указателей.
+/**
+ * @brief То же, что и `ArrayAverage`, но доступ к массиву реализован с помощью указателей.
+ * @see ArrayAverage
+ * @param array указатель на массив
+ * @param size длина массива
+ * @param multipleOfIndex
+ */
 float ArrayPtrAverage(int *array, int size, int multipleOfIndex) {
     int len = 0;
     int sum = 0;
@@ -98,6 +146,11 @@ float ArrayPtrAverage(int *array, int size, int multipleOfIndex) {
     return 0;
 }
 
+/**
+ * @param count
+ * @param min
+ * @param minCount
+ */
 typedef struct GreaterThan {
     int count;
     int min;
@@ -112,16 +165,24 @@ void GreaterThanString(GreaterThan *this, char *buffer) {
     sprintf(buffer, "{ count = %d, min = %d, minCount = %d }", this->count, this->min, this->minCount);
 }
 
-GreaterThan ArrayGreaterThan(int *array, int size, int number)
+/**
+ * @brief Считает кол-во чисел, которые больше указанного @p exclusiveMin .
+ *        Находит среди них минимальное число.
+ *        Подсчитывает, сколько раз встречается это минимальное число.
+ * @param array
+ * @param arrayLength
+ * @param exclusiveMin считаются числа больше этого числа
+ */
+GreaterThan ArrayGreaterThan(int *array, int arrayLength, int exclusiveMin)
 {
     int count = 0;
     int min = INT_MAX;
     int minCount = -1;
     int current;
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < arrayLength; i++)
     {
         current = array[i];
-        if (current > number)
+        if (current > exclusiveMin)
         {
             if (current < min) {
                 min = current;
@@ -136,17 +197,20 @@ GreaterThan ArrayGreaterThan(int *array, int size, int number)
     return greaterThan;
 }
 
-// То же, что и `ArrayGreaterThan`, но доступ к массиву реализован с помощью указателей.
-GreaterThan ArrayPtrGreaterThan(int *array, int size, int number)
+/**
+ * @brief То же, что и @p ArrayGreaterThan, но доступ к массиву реализован с помощью указателей.
+ * @see ArrayGreaterThan()
+ */
+GreaterThan ArrayPtrGreaterThan(int *array, int arraySize, int exclusiveMin)
 {
     int count = 0;
     int min = INT_MAX;
     int minCount = -1;
     int current;
-    for (int *arrayLast = array + size; array < arrayLast; array++)
+    for (int *arrayLast = array + arraySize; array < arrayLast; array++)
     {
         current = *array;
-        if (current > number)
+        if (current > exclusiveMin)
         {
             if (current < min) {
                 min = current;
