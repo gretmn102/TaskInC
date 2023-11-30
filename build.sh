@@ -1,7 +1,7 @@
 #!/bin/bash
 
 gcc="gcc -fdiagnostics-color=always -g -I ."
-main_dir="src"
+main_dir="src/Main"
 main_output_filename="Main.exe"
 tests_output_filename="Tests.exe"
 tests_dir="tests"

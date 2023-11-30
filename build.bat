@@ -3,7 +3,7 @@
 setlocal enabledelayedexpansion
 
 set "gcc=gcc -fdiagnostics-color=always -g -I ."
-set "main_dir=src"
+set "main_dir=src\Main"
 set "main_output_filename=Main.exe"
 set "tests_output_filename=Tests.exe"
 set "tests_dir=tests"
