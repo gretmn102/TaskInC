@@ -169,9 +169,8 @@ _Bool GreaterThanEquals(GreaterThan *first, GreaterThan *second) {
  * @param[in] this
  * @param[out] buffer
  */
-void GreaterThanString(GreaterThan *this, char *buffer) {
-    // todo: add return written characters count
-    sprintf(buffer, "{ count = %d, min = %d, minCount = %d }", this->count, this->min, this->minCount);
+int GreaterThanString(GreaterThan *this, char *buffer) {
+    return sprintf(buffer, "{ count = %d, min = %d, minCount = %d }", this->count, this->min, this->minCount);
 }
 
 /**
