@@ -37,6 +37,39 @@ void TestArrayAverage() {
     }
 }
 
+void TestArrayPtrAverage() {
+    {
+        printf("TestArrayPtrAverage.test1\n");
+        int arr[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        float act = ArrayPtrAverage((int *)&arr, ARRAY_SIZE(arr), 0);
+        float exp = 0.0;
+        if (fabs(exp - act) > 0.1) {
+            printf("Expected %f but %f!\n", exp, act);
+            exit(EXIT_FAILURE);
+        }
+    }
+    {
+        printf("TestArrayPtrAverage.test2\n");
+        int arr[] = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+        float act = ArrayPtrAverage((int *)&arr, ARRAY_SIZE(arr), 10);
+        float exp = 6.333333;
+        if (fabs(exp - act) > 0.1) {
+            printf("Expected %f but %f!\n", exp, act);
+            exit(EXIT_FAILURE);
+        }
+    }
+    {
+        printf("TestArrayPtrAverage.test3\n");
+        int arr[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        float act = ArrayPtrAverage((int *)&arr, ARRAY_SIZE(arr), 10);
+        float exp = 2.6666666;
+        if (fabs(exp - act) > 0.1) {
+            printf("Expected %f but %f!\n", exp, act);
+            exit(EXIT_FAILURE);
+        }
+    }
+}
+
 void TestArrayGreaterThan() {
     {
         printf("TestArrayGreaterThan.test1\n");
@@ -84,6 +117,7 @@ void TestArrayGreaterThan() {
 
 void RunTests() {
     TestArrayAverage();
+    TestArrayPtrAverage();
     TestArrayGreaterThan();
 }
 

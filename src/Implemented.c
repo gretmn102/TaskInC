@@ -4,6 +4,7 @@
 #include <time.h>
 #include <limits.h>
 #include <wchar.h>
+#include <stdbool.h>
 
 typedef struct Range {
     int from;
@@ -66,6 +67,27 @@ float ArrayAverage(int *array, int size, int multipleOfIndex) {
             sum += array[i];
             len++;
         }
+    }
+    if (len > 0) {
+        return (float)sum / (float)len;
+    }
+
+    return 0;
+}
+
+// То же, что и `ArrayAverage`, но доступ к массиву реализован с помощью указателей.
+float ArrayPtrAverage(int *array, int size, int multipleOfIndex) {
+    int len = 0;
+    int sum = 0;
+
+    array++;
+
+    for (int i = 1; i < size && i <= multipleOfIndex; i++) {
+        if (multipleOfIndex % i == 0) {
+            sum += *array;
+            len++;
+        }
+        array++;
     }
     if (len > 0) {
         return (float)sum / (float)len;
