@@ -79,15 +79,17 @@ float ArrayAverage(int *array, int size, int multipleOfIndex) {
 float ArrayPtrAverage(int *array, int size, int multipleOfIndex) {
     int len = 0;
     int sum = 0;
+    int *arrayFirst = array;
+    int *arrayLast = array + size;
+    int *multipleOfIndexLast = array + multipleOfIndex;
 
     array++;
 
-    for (int i = 1; i < size && i <= multipleOfIndex; i++) {
-        if (multipleOfIndex % i == 0) {
+    for (; array < arrayLast && array <= multipleOfIndexLast; array++) {
+        if (multipleOfIndex % (array - arrayFirst) == 0) {
             sum += *array;
             len++;
         }
-        array++;
     }
     if (len > 0) {
         return (float)sum / (float)len;
