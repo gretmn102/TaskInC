@@ -1,7 +1,7 @@
 #include <math.h>
 
 #include "../src/Lib/Array.c"
-#include "../src/Lib/String.c"
+#include "../src/Lib/String.h"
 #include "../src/Main/Implemented.c"
 
 void TestArrayAverage() {

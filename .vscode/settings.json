@@ -12,6 +12,10 @@
         "limits.h": "c",
         "wchar.h": "c",
         "types.h": "c",
-        "windows.h": "c"
+        "windows.h": "c",
+        "stdbool.h": "c",
+        "process.h": "c",
+        "string.h": "c",
+        "foo.h": "c"
     }
 }

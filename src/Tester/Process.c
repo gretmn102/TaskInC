@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <windows.h>
 
+#include "process.h"
+
 int ProcessCreateWriteAndRead(char *programPath, char *inputData, int inputDataLength, char *outputData, int outputDataLength) {
     HANDLE childInputReadPipe, childInputWritePipe;
     HANDLE childOutputReadPipe, childOutputWritePipe;

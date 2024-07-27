@@ -6,7 +6,7 @@
 #include "../Lib/Array.c"
 #include "Request.c"
 #include "Response.c"
-#include "Process.c"
+#include "Process.h"
 
 int main(int argc, char *argv[]) {
     setlocale(LC_CTYPE, "Russian");
